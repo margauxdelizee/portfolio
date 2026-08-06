@@ -3,7 +3,7 @@ import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
 import Chip from '@mui/material/Chip';
-import '../assets/styles/Expertise.scss';
+import '../assets/styles/Skills.scss';
 
 const labelsFirst = [
     "React",
@@ -41,11 +41,11 @@ const labelsThird = [
     "Streamlit",
 ];
 
-function Expertise() {
+function Skills() {
     return (
-    <div className="container" id="expertise">
+    <div className="container" id="skills">
         <div className="skills-container">
-            <h1>Expertise</h1>
+            <h1>Skills</h1>
             <div className="skills-grid">
                 <div className="skill">
                     <FontAwesomeIcon icon={faReact} size="3x"/>
@@ -88,4 +88,4 @@ function Expertise() {
     );
 }
 
-export default Expertise;
+export default Skills;

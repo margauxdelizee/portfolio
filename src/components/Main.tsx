@@ -1,6 +1,6 @@
 import React from "react";
-import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import profileImage from '../assets/images/profile.jpg';
 import '../assets/styles/Main.scss';
 
 function Main() {
@@ -8,20 +8,27 @@ function Main() {
   return (
     <div className="container">
       <div className="about-section">
-        <div className="image-wrapper">
-          <img src="https://my-aws-assets.s3.us-west-2.amazonaws.com/portfolio-img/avatar_circle.jpeg" alt="Avatar" />
-        </div>
-        <div className="content">
-          <div className="social_icons">
-            <a href="https://github.com/yujisatojr" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://www.linkedin.com/in/yujisato/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+        <div className="hero-flex">
+          <div className="image-wrapper">
+            <img src={profileImage} alt="Avatar" />
           </div>
-          <h1>Yuji Sato</h1>
-          <p>Full Stack Engineer</p>
+          <div className="content">
+            <div className="social_icons">
+              <a href="https://www.linkedin.com/in/margaux-delizee" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+              <p className="eyebrow">M.Eng. Biomedical Engineering · Boston University </p>
+            </div>
 
-          <div className="mobile_social_icons">
-            <a href="https://github.com/yujisatojr" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://www.linkedin.com/in/yujisato/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <h1>Margaux Delizée</h1>
+            <p>Biomedical Engineer | Electrical Engineering Background</p>
+
+            <div className="hero-buttons">
+              <a href={`${process.env.PUBLIC_URL}/resume.pdf`} download="Resume Margaux Delizée.pdf" className="resume-button">Download Resume</a>
+              <a href="#projects" className="resume-button" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>View My Work</a>
+            </div>
+
+            <div className="mobile_social_icons">
+              <a href="https://www.linkedin.com/in/margaux-delizee" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            </div>
           </div>
         </div>
       </div>
