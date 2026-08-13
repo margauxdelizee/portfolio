@@ -58,7 +58,9 @@
 .about-section .image-wrapper {
     z-index: 2;
     position: relative;
+    align-self: flex-start;
     width: 220px;
+    aspect-ratio: 3 / 4;
 
     img {
         position: absolute;
@@ -178,6 +180,16 @@
             text-align: center;
             width: 100%;
             box-sizing: border-box;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1100px) {
+        .about-section h1 {
+            font-size: 3.2em;
+        }
+    
+        .about-section .content p {
+            font-size: 1.2em;
         }
     }
 

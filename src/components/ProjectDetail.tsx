@@ -81,6 +81,10 @@ function ProjectDetail() {
                     <div className="detail-pdf-frame">
                         <iframe src={project.pdf} title={`${project.title} — Report`} />
                     </div>
+                    <p className="pdf-mobile-hint">Tap below to view the full report.</p>
+                    <a href={project.pdf} target="_blank" rel="noreferrer" className="pdf-download-link">
+                        Open Full Report
+                    </a>
                 </div>
             )}
         </div>
