@@ -15,6 +15,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = [['About', 'about'], ['Projects', 'projects'], ['Skills', 'skills'], ['Contact', 'contact']];
@@ -25,6 +26,8 @@ function Navigation({parentToChild, modeChange}: any) {
 
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -47,13 +50,13 @@ function Navigation({parentToChild, modeChange}: any) {
   }, []);
 
   const scrollToSection = (section: string) => {
-    console.log(section)
-    const expertiseElement = document.getElementById(section);
-    if (expertiseElement) {
-      expertiseElement.scrollIntoView({ behavior: 'smooth' });
-      console.log('Scrolling to:', expertiseElement);  // Debugging: Ensure the element is found
+    if (location.pathname === "/") {
+      const target = document.getElementById(section);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
-      console.error('Element with id "expertise" not found');  // Debugging: Log error if element is not found
+      navigate("/", { state: { scrollTo: section } });
     }
   };
 

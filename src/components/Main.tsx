@@ -2,6 +2,7 @@ import React from "react";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import profileImage from '../assets/images/profile.jpg';
 import '../assets/styles/Main.scss';
+import { Link } from "react-router-dom";
 
 function Main() {
 
@@ -23,7 +24,7 @@ function Main() {
 
             <div className="hero-buttons">
               <a href={`${process.env.PUBLIC_URL}/resume.pdf`} download="Resume Margaux Delizée.pdf" className="resume-button">Download Resume</a>
-              <a href="#projects" className="resume-button" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>View My Work</a>
+              <Link to="/" state={{ scrollTo: "projects" }} className="resume-button">View My Work</Link>
             </div>
 
             <div className="mobile_social_icons">
