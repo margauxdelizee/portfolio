@@ -1,116 +1,68 @@
-import React, { useRef, useState } from 'react';
+import React from "react";
+import EmailIcon from '@mui/icons-material/Email';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
-import TextField from '@mui/material/TextField';
+
+interface ContactLink {
+    icon: React.ReactNode;
+    label: string;
+    href: string;
+}
+
+const contactLinks: ContactLink[] = [
+    {
+        icon: <EmailIcon fontSize="inherit" />,
+        label: "margauxd@bu.edu",
+        href: "mailto:margauxd@bu.edu",
+    },
+    {
+        icon: <LocalPhoneIcon fontSize="inherit" />,
+        label: "(610) 730-8284",
+        href: "tel:+16107308284",
+    },
+    {
+        icon: <LinkedInIcon fontSize="inherit" />,
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/margaux-delizee",
+    },
+    {
+        icon: <GitHubIcon fontSize="inherit" />,
+        label: "GitHub",
+        href: "https://github.com/margauxdelizee",
+    },
+];
 
 function Contact() {
+    return (
+        <div className="contact-container" id="contact">
+            <h2 className="section-label">Get In Touch</h2>
+            <h1 className="about-tagline">Open to what's next.</h1>
 
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+            <p className="contact-text">
+                My background spans control systems, physiological modeling, and
+                hands-on hardware work, from closed-loop algorithms for medical devices
+                to fieldwork in industrial robotics. I'm available starting June 2027,
+                and always glad to hear from people working on interesting problems.
+            </p>
 
-  const [nameError, setNameError] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<boolean>(false);
-  const [messageError, setMessageError] = useState<boolean>(false);
-
-  const form = useRef();
-
-  const sendEmail = (e: any) => {
-    e.preventDefault();
-
-    setNameError(name === '');
-    setEmailError(email === '');
-    setMessageError(message === '');
-
-    /* Uncomment below if you want to enable the emailJS */
-
-    // if (name !== '' && email !== '' && message !== '') {
-    //   var templateParams = {
-    //     name: name,
-    //     email: email,
-    //     message: message
-    //   };
-
-    //   console.log(templateParams);
-    //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error);
-    //     },
-    //   );
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // }
-  };
-
-  return (
-    <div id="contact">
-      <div className="items-container">
-        <div className="contact_wrapper">
-          <h1>Contact Me</h1>
-          <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
-          <Box
-            ref={form}
-            component="form"
-            noValidate
-            autoComplete="off"
-            className='contact-form'
-          >
-            <div className='form-flex'>
-              <TextField
-                required
-                id="outlined-required"
-                label="Your Name"
-                placeholder="What's your name?"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-                error={nameError}
-                helperText={nameError ? "Please enter your name" : ""}
-              />
-              <TextField
-                required
-                id="outlined-required"
-                label="Email / Phone"
-                placeholder="How can I reach you?"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                error={emailError}
-                helperText={emailError ? "Please enter your email or phone number" : ""}
-              />
+            <div className="contact-links">
+                {contactLinks.map((link, index) => (
+                    <a
+                        className="contact-link"
+                        key={index}
+                        href={link.href}
+                        target={link.href.startsWith("http") ? "_blank" : undefined}
+                        rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                        <span className="contact-link-icon">{link.icon}</span>
+                        {link.label}
+                    </a>
+                ))}
             </div>
-            <TextField
-              required
-              id="outlined-multiline-static"
-              label="Message"
-              placeholder="Send me any inquiries or questions"
-              multiline
-              rows={10}
-              className="body-form"
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
-              error={messageError}
-              helperText={messageError ? "Please enter the message" : ""}
-            />
-            <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
-              Send
-            </Button>
-          </Box>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Contact;

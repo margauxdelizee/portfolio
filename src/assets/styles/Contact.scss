@@ -1,48 +1,81 @@
-.contact_wrapper svg {
-  font-size: 1em;
-  vertical-align: middle;
-  margin-right: 5px;
+.contact-container {
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
-.contact-form {
-  padding-top: 20px;
-
-  button {
-    float: right;
-    background-color: white;
-    color: #050f0b;
-  }
-
-  button:hover {
-    background-color: #5000ca;
-    color: white;
-  }
-
-  fieldset {
-    background-color: white;
-  }
+.contact-container .about-tagline {
+    margin-top: 4px;
 }
 
-label {
-  font-size: 1.2rem;
-  font-family: 'DomaineDispNar-Medium', sans-serif;
+.contact-text {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    text-align: center;
+    font-size: 1.05em;
+    line-height: 1.7;
+    opacity: 0.8;
 }
 
-.form-flex {
-  display: flex;
-  gap: 15px;
-  padding-bottom: 15px;
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
 }
 
-.form-flex .MuiFormControl-root {
-  width: 100%;
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: "Courier Prime", monospace;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
-form {
-  width: 100% !important;
+.dark-mode .contact-link {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.body-form {
-  width: 100% !important;
-  margin-bottom: 15px !important;
+.dark-mode .contact-link:hover {
+    border-color: rgba(193, 60, 240, 0.5);
+    background-color: rgba(193, 60, 240, 0.12);
+    transform: translateY(-2px);
+}
+
+.light-mode .contact-link {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.light-mode .contact-link:hover {
+    border-color: rgba(193, 60, 240, 0.5);
+    background-color: rgba(193, 60, 240, 0.08);
+    transform: translateY(-2px);
+}
+
+.contact-link-icon {
+    font-size: 1.1rem;
+    color: #c13cf0;
+    display: flex;
+}
+
+@media screen {
+    @media (max-width: 700px) {
+        .contact-container {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .contact-text {
+            font-size: 0.95em;
+        }
+    }
 }

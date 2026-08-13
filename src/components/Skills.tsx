@@ -1,90 +1,98 @@
 import React from "react";
-import '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
 import Chip from '@mui/material/Chip';
+import TuneIcon from '@mui/icons-material/Tune';
+import CodeIcon from '@mui/icons-material/Code';
+import MemoryIcon from '@mui/icons-material/Memory';
+import BuildIcon from '@mui/icons-material/Build';
 import '../assets/styles/Skills.scss';
 
-const labelsFirst = [
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
-    "SASS",
-    "Flask",
-    "Python",
-    "SQL",
-    "PostgreSQL",
-    "Postman"
-];
+interface SkillCategory {
+    icon: React.ReactNode;
+    title: string;
+    skills: string[];
+}
 
-const labelsSecond = [
-    "Git",
-    "GitHub Actions",
-    "Docker",
-    "AWS",
-    "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
-];
-
-const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+const categories: SkillCategory[] = [
+    {
+        icon: <TuneIcon fontSize="inherit" />,
+        title: "Control & Modeling",
+        skills: [
+            "Optimal Control",
+            "Nonlinear Control",
+            "Model Predictive Control",
+            "PI/PID Control",
+            "Optimal Estimation (Kalman Filtering)",
+            "State-Space Modeling",
+            "System Identification",
+            "PK-PD Modeling",
+            "Physiological Modeling",
+        ],
+    },
+    {
+        icon: <CodeIcon fontSize="inherit" />,
+        title: "Languages & Software",
+        skills: [
+            "Python",
+            "MATLAB",
+            "Simulink",
+            "C++",
+            "LaTeX",
+            "SQL",
+            "Arduino",
+            "SolidWorks",
+            "Visual Studio Code",
+            "Jupyter Notebook",
+            "GitHub",
+        ],
+    },
+    {
+        icon: <MemoryIcon fontSize="inherit" />,
+        title: "Embedded Systems & Hardware",
+        skills: [
+            "Sensor Selection",
+            "Datasheet Analysis",
+            "Breadboard Prototyping & Wiring",
+            "WiFi Connectivity",
+            "API Integration",
+            "Microcontroller Programming",
+        ],
+    },
+    {
+        icon: <BuildIcon fontSize="inherit" />,
+        title: "Systems Engineering & Tools",
+        skills: [
+            "Laser Cutting",
+            "3D Printing",
+            "Biopac",
+            "Oscilloscope",
+            "Industrial Controllers (B&R)",
+            "Technical Documentation (Polarion)",
+            "Instructional Design (EasyGenerator)",
+        ],
+    },
 ];
 
 function Skills() {
     return (
-    <div className="container" id="skills">
-        <div className="skills-container">
-            <h1>Skills</h1>
+        <div className="skills-container" id="skills">
+            <h2 className="section-label">Skills</h2>
+
             <div className="skills-grid">
-                <div className="skill">
-                    <FontAwesomeIcon icon={faReact} size="3x"/>
-                    <h3>Full Stack Web Development</h3>
-                    <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsFirst.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
+                {categories.map((category, index) => (
+                    <div className="skill-card" key={index}>
+                        <div className="skill-header">
+                            <div className="skill-icon">{category.icon}</div>
+                            <h3>{category.title}</h3>
+                        </div>
+                        <div className="flex-chips">
+                            {category.skills.map((label, i) => (
+                                <Chip key={i} className="skill-chip" label={label} />
+                            ))}
+                        </div>
                     </div>
-                </div>
-
-                <div className="skill">
-                    <FontAwesomeIcon icon={faDocker} size="3x"/>
-                    <h3>DevOps & Automation</h3>
-                    <p>Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live.</p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsSecond.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="skill">
-                    <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsThird.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
-    </div>
     );
 }
 
