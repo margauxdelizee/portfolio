@@ -1,12 +1,11 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.9b9189b4.css",
+    "main.css": "/portfolio/static/css/main.cd20100a.css",
     "main.js": "/portfolio/static/js/main.617ee70b.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/media/anesthesia-mpc-report.pdf": "/portfolio/static/media/anesthesia-mpc-report.568f77e76a9c4ba3164e.pdf",
     "static/media/profile.jpg": "/portfolio/static/media/profile.20365830ced5f847b18b.jpg",
     "static/media/bg-light.png": "/portfolio/static/media/bg-light.bac0efb485244a522981.png",
-    "static/media/bg-dark.png": "/portfolio/static/media/bg-dark.f420c6b8458af72de935.png",
     "static/media/davinci-console.jpg": "/portfolio/static/media/davinci-console.ece1ce7ed2fe1e207a38.jpg",
     "static/media/gantry-structure-detail.jpg": "/portfolio/static/media/gantry-structure-detail.a33e02b3aaaa1be58802.jpg",
     "static/media/vns-mpc-healthy-outputs.jpg": "/portfolio/static/media/vns-mpc-healthy-outputs.91df918b5083c25648f5.jpg",
@@ -36,12 +35,12 @@
     "static/media/anesthesia-mpc-diagram.jpg": "/portfolio/static/media/anesthesia-mpc-diagram.3a84aee09697e0f76e21.jpg",
     "static/media/gantry-poles-plot.jpg": "/portfolio/static/media/gantry-poles-plot.6c1cfbd28863e22b0c5b.jpg",
     "index.html": "/portfolio/index.html",
-    "main.9b9189b4.css.map": "/portfolio/static/css/main.9b9189b4.css.map",
+    "main.cd20100a.css.map": "/portfolio/static/css/main.cd20100a.css.map",
     "main.617ee70b.js.map": "/portfolio/static/js/main.617ee70b.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b9189b4.css",
+    "static/css/main.cd20100a.css",
     "static/js/main.617ee70b.js"
   ]
 }
