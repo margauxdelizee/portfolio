@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import ProjectDetail from './components/ProjectDetail';
 import './index.scss';
 import BackToTop from './components/BackToTop';
+import Projects from './pages/Projects';
 
 function App() {
     const [mode, setMode] = useState<string>('dark');
@@ -40,6 +41,7 @@ function App() {
         <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
         <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
         </Routes>
         <Footer />

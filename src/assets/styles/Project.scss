@@ -5,6 +5,14 @@
     text-align: left;
 }
 
+.projects-page-title {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 1.4em;
+    color: #c13cf0;
+    margin: 0 0 16px;
+}
+
 .projects-subtitle {
     font-size: 1.1em;
     line-height: 1.7;
@@ -181,6 +189,7 @@
     border-radius: 30px;
     padding: 12px 26px;
     border: 1px solid rgba(193, 60, 240, 0.4);
+    color: #c13cf0;
     transition: background-color 0.25s ease, transform 0.25s ease;
 
     svg {
@@ -190,6 +199,7 @@
     &:hover {
         background-color: rgba(193, 60, 240, 0.12);
         transform: translateY(-2px);
+        color: #c13cf0;
 
         svg {
             transform: translateX(4px);

@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate, useLocation } from "react-router-dom";
 import Chip from '@mui/material/Chip';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { projects } from '../data/projects';
@@ -7,11 +7,16 @@ import '../assets/styles/ProjectDetail.scss';
 
 function ProjectDetail() {
     const { slug } = useParams<{ slug: string }>();
+    const location = useLocation();
     const project = projects.find((p) => p.slug === slug);
 
     if (!project) {
         return <Navigate to="/" replace />;
     }
+
+    const cameFromProjectsPage = (location.state as { from?: string } | null)?.from === 'projects';
+    const backTo = cameFromProjectsPage ? '/projects' : '/';
+    const backState = cameFromProjectsPage ? undefined : { scrollTo: 'projects' };
 
     const coverMedia = (
         <div className={`detail-media${project.lightMedia ? ' light-media' : ''}${project.framed ? ' framed' : ''}`}>
@@ -21,9 +26,9 @@ function ProjectDetail() {
 
     return (
         <div className="project-detail-container">
-            <Link to="/" state={{ scrollTo: "projects" }} className="back-link">
+            <Link to={backTo} state={backState} className="back-link">
                 <ArrowBackIcon fontSize="small" />
-                Back to projects
+                {cameFromProjectsPage ? "Back to all projects" : "Back to featured projects"}
             </Link>
 
             <p className="detail-meta">{project.meta}</p>
@@ -61,6 +66,14 @@ function ProjectDetail() {
                                         <img src={section.image} alt={section.imageCaption || project.title} />
                                         {section.imageCaption && (
                                             <figcaption>{section.imageCaption}</figcaption>
+                                        )}
+                                    </figure>
+                                )}
+                                {section.video && (
+                                    <figure className={`detail-section-figure${section.compact ? ' compact' : ''}`}>
+                                        <video src={section.video} controls muted loop playsInline />
+                                        {section.videoCaption && (
+                                            <figcaption>{section.videoCaption}</figcaption>
                                         )}
                                     </figure>
                                 )}

@@ -29,6 +29,29 @@ import kinematicsDhParams from '../assets/images/projects/kinematics-fig3-dh-par
 import kinematicsWristDecoupling from '../assets/images/projects/kinematics-fig4-wrist.jpg';
 import kinematicsResults from '../assets/images/projects/kinematics-fig5-results.jpg';
 import davinciConsole from '../assets/images/projects/davinci-console.jpg';
+import mmfitCover from '../assets/images/projects/mmfit-cover.jpg';
+import nrgQuestCover from '../assets/images/projects/nrg-quest-cover.jpg';
+import logSorterCover from '../assets/images/projects/log-sorter-cover.png';
+import ibaTrainingCover from '../assets/images/projects/iba-training-cover.png';
+import ibaPatientSupportCover from '../assets/images/projects/iba-patient-support-cover.jpg';
+import mmfitWiringDiagram from '../assets/images/projects/mmfit-wiring-diagram.png';
+import mmfitBreadboard from '../assets/images/projects/mmfit-breadboard-prototype.jpg';
+import mmfitDashboard from '../assets/images/projects/mmfit-dashboard.png';
+import mmfitSystemDiagram from '../assets/images/projects/mmfit-system-diagram.png';
+import mmfitFieldTestVideo from '../assets/videos/mmfit-field-test.mp4';
+import nrgQuestCards from '../assets/images/projects/nrg-quest-cards.png';
+import nrgQuestEnergyWheel from '../assets/images/projects/nrg-quest-energy-wheel.png';
+import nrgQuestScenarioTree from '../assets/images/projects/nrg-quest-scenario-tree.png';
+import nrgQuestIconLegend from '../assets/images/projects/nrg-quest-icon-legend.png';
+import logSorterSketchV2 from '../assets/images/projects/log-sorter-sketch-v2.png';
+import logSorterWheelSketch from '../assets/images/projects/log-sorter-wheel-sketch.png';
+import logSorterCadAngle2 from '../assets/images/projects/log-sorter-cad-angle2.png';
+import logSorterCadAngle3 from '../assets/images/projects/log-sorter-cad-angle3.png';
+import logSorterPrototypeWide from '../assets/images/projects/log-sorter-prototype-wide.png';
+import logSorterPrototypeClose from '../assets/images/projects/log-sorter-prototype-close.png';
+import logSorterTestVideo from '../assets/videos/log-sorter-test.mp4';
+import ibaTrainingEditorView from '../assets/images/projects/iba-training-editor-view.png';
+import ibaTrainingHotspots from '../assets/images/projects/iba-training-hotspots.png';
 
 export interface ProjectSection {
     label: string;
@@ -36,6 +59,8 @@ export interface ProjectSection {
     image?: string;
     imageCaption?: string;
     compact?: boolean;
+    video?: string;
+    videoCaption?: string;
 }
 
 export interface ProjectItem {
@@ -49,6 +74,7 @@ export interface ProjectItem {
     framed?: boolean;
     detail?: ProjectSection[];
     pdf?: string;
+    featured?: boolean;
 }
 
 export const projects: ProjectItem[] = [
@@ -60,6 +86,7 @@ export const projects: ProjectItem[] = [
         tags: ["Model Predictive Control", "Data-Driven Modeling (LSTM)", "Physiological Modeling", "Nonlinear Control", "Python", "Technical Writing"],
         image: vnsMpcCover,
         lightMedia: true,
+        featured: true,
         detail: [
             {
                 label: "Overview",
@@ -109,6 +136,7 @@ export const projects: ProjectItem[] = [
         tags: ["Model Predictive Control", "Feedforward-PI Control", "PK-PD Modeling", "Multivariable Systems", "MATLAB/Simulink", "Technical Writing"],
         image: anesthesiaCover,
         lightMedia: true,
+        featured: true,
         pdf: anesthesiaReportPdf,
         detail: [
             {
@@ -177,6 +205,7 @@ export const projects: ProjectItem[] = [
         image: gantryModelCover,
         lightMedia: false,
         framed: true,
+        featured: true,
         detail: [
             {
                 label: "Overview",
@@ -222,6 +251,7 @@ export const projects: ProjectItem[] = [
         image: gantryValidationCover,
         lightMedia: false,
         framed: true,
+        featured: true,
         detail: [
             {
                 label: "Overview",
@@ -263,6 +293,7 @@ export const projects: ProjectItem[] = [
         tags: ["Analog Circuit Design", "Instrumentation Amplifiers", "Active Filter Design", "Digital Signal Processing", "Biopac/Oscilloscope"],
         image: ecgCover,
         lightMedia: true,
+        featured: true,
         detail: [
             {
                 label: "Overview",
@@ -305,6 +336,7 @@ export const projects: ProjectItem[] = [
         tags: ["Denavit-Hartenberg Convention", "Forward/Inverse Kinematics", "C++", "Trajectory Planning"],
         image: kinematicsCover,
         lightMedia: true,
+        featured: true,
         detail: [
             {
                 label: "Overview",
@@ -342,7 +374,262 @@ export const projects: ProjectItem[] = [
             },
         ],
     },
-
+    {
+        slug: "mmfit",
+        meta: "Feb – May 2024 · University of Mons",
+        title: "MMFit — Wearable Fitness Tracker",
+        description: "A wearable fitness tracker built around an ESP8266, integrating heart-rate, motion, and GPS sensors with a self-hosted web dashboard for real-time monitoring.",
+        tags: ["Sensor Integration", "Embedded C / Arduino", "Hardware Testing & Calibration", "ESP8266"],
+        image: mmfitCover,
+        featured: false,
+        framed: true,
+        detail: [
+            {
+                label: "Overview",
+                paragraphs: [
+                    "MMFit is a wearable fitness tracker designed to monitor heart rate, body temperature, step count, distance, and GPS location in real time, streaming this data to a self-hosted web dashboard. The project combined an ESP8266 microcontroller with three sensors and a locally hosted website for live visualization, all built and tested from the ground up.",
+                    "Within the team, I was responsible for the hardware side of the project: sensor selection, wiring, calibration, and validation against reference devices, while a teammate handled the web interface."
+                ],
+                image: mmfitSystemDiagram,
+                imageCaption: "System architecture: sensor data flows from the ESP8266 through LittleFS storage to the web interface.",
+            },
+            {
+                label: "Approach",
+                paragraphs: [
+                    "The system integrates three sensors around a NodeMCU ESP8266: a MAX30101 optical sensor for heart rate and skin temperature, a BMA456 accelerometer for step counting, and a TEL0094 GPS module for location tracking. All three communicate with the microcontroller over I2C and UART, sharing a common power and ground bus.",
+                    "Getting reliable readings required extensive hands-on calibration. The MAX30101 proved highly sensitive to contact pressure on the infrared detector, so testing protocols had to enforce consistent finger pressure across measurements."
+                ],
+                image: mmfitWiringDiagram,
+                imageCaption: "Full wiring diagram: NodeMCU ESP8266 connected to the MAX30101 (heart rate/temperature), BMA456 (motion), and TEL0094 (GPS) sensors.",
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "The full sensor array was first assembled and tested on a breadboard prototype before being validated in real-world conditions."
+                ],
+                image: mmfitBreadboard,
+                imageCaption: "Breadboard prototype: ESP8266, MAX30101 heart-rate sensor, BMA456 accelerometer, and TEL0094 GPS module.",
+                compact: true,
+            },
+            {
+                label: "Results",
+                paragraphs: [
+                    "Each sensor was validated against a commercial reference device (a Coros Pace2 watch for heart rate and step count, Google Maps for GPS coordinates) across multiple test series, including live field tests. The heart rate sensor tracked the reference watch's trends closely, with an average deviation of 7.4%, consistent with its known sensitivity to pressure and positioning."
+                ],
+                video: mmfitFieldTestVideo,
+                videoCaption: "Field test: the wearable prototype recording heart rate and motion data during an outdoor run.",
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "GPS latitude and longitude readings closely matched Google Maps references, while altitude showed larger discrepancies (2.5–12%), attributable to sensor calibration and atmospheric conditions. Step count and distance measurements from the accelerometer were consistently higher than the reference watch, with differences of 18–33% for step count, highlighting the sensor's higher sensitivity to non-standard movements, an area identified for future recalibration.",
+                    "All sensor data was displayed live on a self-hosted dashboard, updating automatically every 5 seconds."
+                ],
+                image: mmfitDashboard,
+                imageCaption: "Live web dashboard displaying heart rate, temperature, step count, and GPS data streamed from the device.",
+            },
+        ],
+    },
+    {
+        slug: "nrg-quest",
+        meta: "Feb – May 2023 · University of Mons",
+        title: "NRG Quest — Energy Education Board Game",
+        description: "Business development of a cooperative board game teaching 13–24 year-olds about Belgium's electricity mix, from market research to financial projections.",
+        tags: ["Business Model Canvas", "Market Research", "Financial Projections", "Public Speaking & Pitching"],
+        image: nrgQuestCover,
+        featured: false,
+        framed: true,
+        detail: [
+            {
+                label: "Overview",
+                paragraphs: [
+                    "NRG Quest is a cooperative board game designed to teach 13–24 year-olds about Belgium's electricity mix (nuclear, renewable, and gas) through play rather than lecture. The project split the team into a Business track and an R&D track; I worked within the Business team, handling market research, the business model, financial projections, and pitching.",
+                    "The core idea: political discourse around energy is often polarized and hard to navigate for young adults. By turning the underlying trade-offs into a game, players engage with the same decisions utilities and policymakers face, building the electricity mix turn by turn while managing cost, environmental impact, and public support."
+                ],
+            },
+            {
+                label: "Game Design",
+                paragraphs: [
+                    "Each round, players draw energy source cards (nuclear, renewable, or gas) representing a percentage increase in that source's share of the electricity mix. Combining certain cards unlocks bonus effects, for instance pairing renewable sources together yields a larger combined boost than playing them separately, encouraging players to think about complementary energy strategies rather than optimizing a single source."
+                ],
+                image: nrgQuestCards,
+                imageCaption: "Example cards: individual energy sources (nuclear, renewable, gas) and a combination card unlocking a bonus effect.",
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "A rotating wheel divided into the three energy categories tracks the group's cumulative progress toward a balanced electricity mix, while five resource icons (CO2 emissions, cost/benefit balance, environmental health, public support, and available funds) are tracked throughout the game, forcing players to weigh trade-offs rather than simply maximizing one variable."
+                ],
+                image: nrgQuestEnergyWheel,
+                imageCaption: "Prototype spinning wheel tracking the group's cumulative electricity mix across the three energy categories.",
+                compact: true,
+            },
+            {
+                label: "Scenario Logic",
+                paragraphs: [
+                    "Behind the simple card-drawing mechanic sits a full decision tree mapping how each round's choices cascade into later consequences, random events (blackouts, natural disasters), and branching development paths toward 2035. This logic ensured that early-game decisions meaningfully shaped later options, rather than each round being an isolated, disconnected choice."
+                ],
+                image: nrgQuestScenarioTree,
+                imageCaption: "Full scenario decision tree mapping how each round's card choices lead to later events and branching outcomes.",
+            },
+            {
+                label: "Business Development",
+                paragraphs: [
+                    "Using the Business Model Canvas framework, we identified key partners (illustrators, printers, schools for playtesting), customer segments (schools, universities, companies for team-building, game stores), and multiple revenue streams: direct game sales (targeted at €34.99, with a production cost of roughly €19.70 per unit), paid educational workshops (€50 for a 2-hour session with 8 players), and card-pack expansions (€7.99) introducing new scenarios.",
+                    "Market research benchmarked comparable board games in the €35–40 range, and a 48-month financial projection estimated 12 to 24 months to reach profitability, based on production runs of 500–1000 units per order to minimize per-unit cost."
+                ],
+            },
+            {
+                label: "Results",
+                paragraphs: [
+                    "The project placed 2nd among all teams in the StarTech program. Conversations with WWF Belgium confirmed strong market demand, their organization alone facilitates 300–350 educational activities per year in schools, validating the hypothesis that a market exists for this kind of game-based educational activity. A Facebook Ads simulation projected that a €500 budget would reach 11,700 to 33,900 accounts, with an estimated 434 to 1,300 click-throughs to the game's landing page.",
+                    "The project also built an initial audience through Instagram, reaching over 200 followers and 1,200 accounts reached within the first three months, with more than 70% of engagement coming from the target 13–24 age demographic."
+                ],
+            },
+        ],
+    },
+    {
+        slug: "automated-log-sorter",
+        meta: "Sept – Dec 2021 · University of Mons",
+        title: "Automated Log Sorter",
+        description: "Design and fabrication of an automated log-sorting machine classifying logs by color and size, from CAD modeling to a fully wooden, laser-cut assembly.",
+        tags: ["SolidWorks CAD", "Laser Cutting", "3D Printing", "Mechanical Design"],
+        image: logSorterCover,
+        lightMedia: true,
+        featured: false,
+        detail: [
+            {
+                label: "Overview",
+                paragraphs: [
+                    "This first-year engineering project followed the CDIO methodology (Conceive, Design, Implement, Operate) to design and build an automated machine capable of sorting wooden logs: first by health (healthy vs. unhealthy, marked by color), then by height, for the healthy logs. Working in a 9-person team, I served as design engineer, responsible for the machine's structure and its construction techniques, and was later trained in laser cutting and 3D printing to help fabricate the final assembly.",
+                    "The project followed a full engineering cycle: dozens of candidate mechanisms were sketched and scored against simplicity, reliability, efficiency, and cost, before converging on a final design validated through cardboard prototyping, then rebuilt in wood."
+                ],
+            },
+            {
+                label: "Design Process",
+                paragraphs: [
+                    "Two complete machine concepts were developed and compared. The first uses a single rotating wheel with a notch: logs slide down an inclined plane onto the wheel, where a color sensor detects healthy (white) logs, triggering a 90° rotation toward the height-sorting circuit, while unhealthy (black) logs continue toward rejection. The second concept used a double-trapdoor airlock system requiring three separate servomotors.",
+                    "The single-wheel design was selected for its simplicity (one servomotor vs. three), faster sorting speed, and easier fabrication, all critical given the team's limited prior experience with robotics and electronics."
+                ],
+                image: logSorterSketchV2,
+                imageCaption: "Early 3D concept sketch of the retained design: inclined feed ramp, rotating sorting wheel, and height-sorting circuit. Sketch by Ethan Huart.",
+                compact: true,
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "The core sorting mechanism relies on a rotating wheel with a rectangular notch sized to hold a single log. An infrared color sensor mounted above the wheel detects the log's color; the microcontroller then rotates the wheel 90° toward the appropriate circuit. To reduce misreads from the infrared sensor's imperfect reliability, the detection was doubled: two readings taken half a second apart had to agree before the microcontroller committed to a sorting decision."
+                ],
+                image: logSorterWheelSketch,
+                imageCaption: "Sorting mechanism: a color sensor above the rotating wheel triggers a 90° rotation toward one of two circuits based on detected log color. Sketch by Ethan Huart.",
+                compact: true,
+            },
+            {
+                label: "Fabrication",
+                paragraphs: [
+                    "After extensive cardboard prototyping to validate the mechanism, the final structure was rebuilt in reclaimed wood, chosen for its durability and to keep the project's environmental footprint low, no material was purchased for the main structure. The machine was assembled with screws rather than glue, splitting the design into modular, easily disassembled and adjustable sections.",
+                    "Height sorting for the healthy logs uses a second inclined plane fitted with bars at three different heights, taller logs are physically deflected to follow the bar's trajectory and fall into the appropriate collection bin, while shorter logs pass underneath undisturbed."
+                ],
+                image: logSorterCadAngle2,
+                imageCaption: "Final SolidWorks model of the assembled machine, showing the feed ramp, sorting wheel housing, and collection bins.",
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "The final design integrates all wiring and the microcontroller inside a hollow compartment beneath the wheel, accessible through a hinged front panel bearing the team's engraved logo, keeping the machine's exterior clean with no visible cables."
+                ],
+            },
+            {
+                label: "Results",
+                paragraphs: [
+                    "The finished prototype reliably sorted 10 logs in under 20 seconds without a single sorting error during testing. Built from three independent, screw-assembled modules, the machine proved easy to transport and reconfigure, a deliberate design choice validated through the build process."
+                ],
+                image: logSorterPrototypeWide,
+                imageCaption: "The completed wooden prototype: feed ramp, sorting wheel, height-sorting plane, and collection bins.",
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "The team documented the entire build process on Instagram, reaching over 1,200 accounts and 700 likes across the project's development."
+                ],
+                video: logSorterTestVideo,
+                videoCaption: "The finished prototype sorting logs during a timed test run.",
+                compact: true,
+            },
+        ],
+    },
+    {
+        slug: "iba-training-module",
+        meta: "Aug – Sep 2025 · IBA",
+        title: "Interactive E-Learning Module for Patient Positioning System",
+        description: "Design of an interactive e-learning module on the Patient Positioning System (PPS) using EasyGenerator, presented to IBA's Application Specialists team.",
+        tags: ["EasyGenerator", "Instructional Design", "Technical Writing"],
+        image: ibaTrainingCover,
+        lightMedia: true,
+        featured: false,
+        detail: [
+            {
+                label: "Overview",
+                paragraphs: [
+                    "This project involved designing an interactive training module on the Patient Positioning System (PPS), the robotic couch and safety systems used in IBA's proton therapy rooms, using the EasyGenerator e-learning platform. The goal was to pilot a more engaging, easier-to-maintain alternative to the video-based trainings currently used for clinical users, which are difficult to update whenever the underlying system changes.",
+                    "Content was built from two main sources: IBA's Proton Therapy Academy training materials for medical physicists, and an internal technical document detailing the PPS's functioning, restructured into an interactive format designed to actively engage the learner rather than passively present information."
+                ],
+            },
+            {
+                label: "Approach",
+                paragraphs: [
+                    "The module was structured into learning sections, each built around a clear learning objective, followed by content pages and short quizzes to reinforce understanding. Topics covered the PPS design, safety features (collision avoidance, load cell, laser scanner), couch and insert compatibility, and emergency patient extraction procedures."
+                ],
+                image: ibaTrainingEditorView,
+                imageCaption: "Course structure in the EasyGenerator editor: each section is built around a defined learning objective, content pages, and assessment questions.",
+            },
+            {
+                label: "",
+                paragraphs: [
+                    "To make technical diagrams more engaging, key visuals such as the PPS robotic arm were annotated with interactive hotspots, letting learners explore individual components (axes, joints, end effector) at their own pace rather than absorbing a static labeled image all at once."
+                ],
+                image: ibaTrainingHotspots,
+                imageCaption: "Interactive hotspot diagram of the PPS robotic arm, allowing learners to explore individual axes and components.",
+            },
+            {
+                label: "Results",
+                paragraphs: [
+                    "The completed module was presented to IBA's Application Specialists team, the group responsible for creating clinical trainings, during a Teams session with 15 participants. The presentation included a live walkthrough of the module, feedback on EasyGenerator's capabilities and limitations, and a Q&A session to evaluate the platform's potential for future training development within the company."
+                ],
+            },
+        ],
+    },
+    {
+        slug: "iba-patient-support-feedback",
+        meta: "Sep – Oct 2025 · IBA",
+        title: "Patient Support Feedback System Analysis",
+        description: "Cross-functional analysis of the patient support feedback system across hardware and software layers, consolidating findings for IBA's engineering teams.",
+        tags: ["Systems Architecture", "Cross-Team Coordination", "Technical Documentation"],
+        image: ibaPatientSupportCover,
+        featured: false,
+        detail: [
+            {
+                label: "Overview",
+                paragraphs: [
+                    "This mission focused on the patient support feedback system used in IBA's proton therapy rooms, the mechanism that informs clinical users, through preparation and status panels, of which patient support (couch or chair) and extension is currently installed, and whether it matches what was prescribed in the treatment plan. The objective was to consolidate a clear functional understanding of this feedback across the system's different software and hardware layers, and to identify gaps between what the interface displays and the underlying system state, for rooms equipped with the Orion robotic arm.",
+                ],
+            },
+            {
+                label: "Approach",
+                paragraphs: [
+                    "The investigation combined several sources: internal technical requirements and documentation, direct analysis of how information flows between the software components responsible for treatment planning, positioning, and room control, and structured discussions with the engineers responsible for each of these components to validate observed behavior against intended design.",
+                    "This cross-functional work required acting as a bridge between subsystems that don't typically get analyzed together, tracing how a single piece of information (the type of patient support in use) is captured, transformed, and displayed as it moves through the system."
+                ],
+            },
+            {
+                label: "Results",
+                paragraphs: [
+                    "The main deliverable was a presentation to IBA's engineering teams, consolidating three key contributions. First, a unified vocabulary for describing patient support types and categories, resolving inconsistencies that had built up across different parts of the system's documentation and interfaces. Second, a clear map of how this information originates, gets transformed, and propagates through to what clinical users ultimately see on screen. Third, a documented set of edge cases and inconsistencies where the displayed information could diverge from the actual system state, flagged for further investigation by the relevant engineering teams.",
+                    "This mission gave me a broader view of how IBA's software and hardware subsystems interact, and the opportunity to take on a system-expert role, coordinating input across multiple engineering teams to produce a shared reference document. The work now serves as a foundation for ongoing discussions on improving the clarity and reliability of patient support information for clinical users."
+                ],
+            },
+        ],
+    },
 
 
 ];

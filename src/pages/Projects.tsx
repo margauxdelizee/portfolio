@@ -1,25 +1,26 @@
 import React from "react";
 import Chip from '@mui/material/Chip';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { projects } from '../data/projects';
 import '../assets/styles/Project.scss';
+import '../assets/styles/ProjectDetail.scss';
 
-function Project() {
-    const featuredProjects = projects.filter((project) => project.featured);
-
+function Projects() {
     return (
-        <div className="projects-container" id="projects">
-            <h2 className="section-label">Featured Projects</h2>
-            <p className="projects-subtitle">
-                A selection of projects I've worked on, spanning control theory, physiological modeling, and mechanical systems, from graduate research to hands-on industry work. Click on any project below to see the full story.
-            </p>
+        <div className="projects-container">
+            <Link to="/" className="back-link">
+                <ArrowBackIcon fontSize="small" />
+                Back to home
+            </Link>
+
+            <h1 className="projects-page-title">All Projects</h1>
 
             <div className="projects-grid">
-                {featuredProjects.map((project, index) => (
+                {projects.map((project, index) => (
                     <Link
                         to={`/projects/${project.slug}`}
-                        state={{ from: 'home' }}
+                        state={{ from: 'projects' }}
                         className="project-card"
                         key={index}
                     >
@@ -39,15 +40,8 @@ function Project() {
                     </Link>
                 ))}
             </div>
-
-            <div className="projects-more">
-                <Link to="/projects" className="see-more-btn">
-                    See all projects
-                    <ArrowForwardIcon fontSize="small" />
-                </Link>
-            </div>
         </div>
     );
 }
 
-export default Project;
+export default Projects;
