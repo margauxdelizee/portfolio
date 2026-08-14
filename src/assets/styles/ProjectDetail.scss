@@ -8,17 +8,34 @@
     align-items: center;
     gap: 8px;
     font-family: "Lato", sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9em;
-    color: #c13cf0;
+    color: #ffffff;
     margin-bottom: 30px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background-color: #c13cf0;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 
     svg {
         transition: transform 0.25s ease;
     }
 
+    &:hover {
+        background-color: #a52ed6;
+        transform: translateX(-2px);
+    }
+
     &:hover svg {
         transform: translateX(-4px);
+    }
+}
+.light-mode .back-link {
+    color: #ffffff !important;
+
+    svg {
+        color: #ffffff !important;
     }
 }
 

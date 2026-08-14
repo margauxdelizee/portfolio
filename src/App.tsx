@@ -7,6 +7,7 @@ import {
 import Home from './pages/Home';
 import ProjectDetail from './components/ProjectDetail';
 import './index.scss';
+import BackToTop from './components/BackToTop';
 
 function App() {
     const [mode, setMode] = useState<string>('dark');
@@ -42,8 +43,10 @@ function App() {
             <Route path="/projects/:slug" element={<ProjectDetail />} />
         </Routes>
         <Footer />
+        <BackToTop />
     </div>
     );
 }
+
 
 export default App;
